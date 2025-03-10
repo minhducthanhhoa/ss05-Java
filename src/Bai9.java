@@ -14,7 +14,6 @@ public class Bai9 {
             int[][] matrix = new int[n][n];
             Random rand = new Random();
 
-
             System.out.println("Ma trận ban đầu:");
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
@@ -24,7 +23,20 @@ public class Bai9 {
                 System.out.println();
             }
 
-            rotateMatrix90(matrix, n);
+            // Xoay ma trận 90 độ
+            int[][] temp = new int[n][n];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    temp[j][n - 1 - i] = matrix[i][j];
+                }
+            }
+
+            // Sao chép kết quả vào ma trận gốc
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    matrix[i][j] = temp[i][j];
+                }
+            }
 
             System.out.println("Ma trận sau khi xoay 90 độ:");
             for (int i = 0; i < n; i++) {
@@ -32,24 +44,6 @@ public class Bai9 {
                     System.out.print(matrix[i][j] + " ");
                 }
                 System.out.println();
-            }
-        }
-    }
-
-    public static void rotateMatrix90(int[][] matrix, int n) {
-        int[][] temp = new int[n][n];
-
-        // Xoay ma trận
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                temp[j][n - 1 - i] = matrix[i][j];
-            }
-        }
-
-        // Sao chép kết quả vào ma trận gốc
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                matrix[i][j] = temp[i][j];
             }
         }
     }
